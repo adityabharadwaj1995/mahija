@@ -26,14 +26,14 @@
         .c2 { width: 500px; height: 500px; background: #fbbf24; bottom: 10%; right: -5%; }
         @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,30px) scale(1.05); } }
 
-        /* HEADER LOGO SCALING */
+        /* IMPROVED LOGO SCALING */
         .logo-box svg {
             width: auto;
-            height: 40px;
+            height: 52px; /* Increased from 40px for better mobile presence */
             display: block;
         }
         @media (min-width: 768px) {
-            .logo-box svg { height: 50px; }
+            .logo-box svg { height: 65px; } /* Slightly larger on desktop too */
         }
 
         .nav-shadow { box-shadow: 0 4px 25px -10px rgba(0,0,0,0.06); }
@@ -63,6 +63,11 @@
             clip-path: circle(0% at 100% 0%);
         }
         #mobile-menu.active { clip-path: circle(150% at 100% 0%); }
+
+        /* Hide the long legal text inside SVG on mobile */
+        @media (max-width: 767px) {
+            .legal-text { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -73,21 +78,23 @@
     </div>
 
     <div class="relative z-10">
-        <nav class="flex items-center justify-between px-6 md:px-12 py-3 md:py-4 sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 nav-shadow">
+        <nav class="flex items-center justify-between px-4 md:px-12 py-3 md:py-4 sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 nav-shadow">
             <a href="index.html" class="logo-box">
                 <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
                     <rect width="800" height="200" fill="transparent" />
                     <polygon points="40,160 110,30 180,160" fill="#201080" stroke="#C5A059" stroke-width="4"/>
                     <text x="110" y="125" font-family="Serif, Georgia" font-size="60" font-weight="bold" fill="white" text-anchor="middle">m</text>
                     <text x="110" y="185" font-family="Arial, sans-serif" font-size="18" fill="#D4733A" text-anchor="middle" font-weight="bold">SINCE 1999</text>
+                    
                     <text x="220" y="90" font-family="Arial Black, sans-serif" font-size="90" fill="#B32025" letter-spacing="-2">MAHIJA</text>
                     <text x="220" y="135" font-family="Arial Black, sans-serif" font-size="32" fill="#1A1A80">CHIT FUND PVT. LTD.</text>
-                    <text x="220" y="175" font-family="Arial, sans-serif" font-size="18" fill="#C5A059">(a company incorporated under Indian companies act, 1956)</text>
+                    
+                    <text x="220" y="175" font-family="Arial, sans-serif" font-size="18" fill="#C5A059" class="legal-text">(a company incorporated under Indian companies act, 1956)</text>
                 </svg>
             </a>
 
             <div class="hidden lg:flex items-center gap-8 text-[13px] font-semibold text-gray-500 uppercase tracking-wider">
-                <a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">Home</a>
+                <a href="index.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Home</a>
                 <a href="about.html" class="hover:text-blue-600 transition-colors">About Us</a>
                 <a href="plans.html" class="hover:text-blue-600 transition-colors">Chit Plans</a>
                 <a href="works.html" class="hover:text-blue-600 transition-colors">How It Works</a>
@@ -95,7 +102,7 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <button class="hidden md:block btn-animate bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Get Started</button>
+                <a href="contact.html" class="hidden md:block btn-animate bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Get Started</a>
                 <button id="menu-toggle" class="lg:hidden p-2 text-gray-600"><i data-lucide="menu" class="w-7 h-7"></i></button>
             </div>
         </nav>
@@ -112,7 +119,7 @@
                 <a href="works.html">How it Works</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <button class="mt-auto bg-blue-600 text-white py-4 rounded-xl font-bold text-lg">Get Started</button>
+            <a href="contact.html" class="mt-auto bg-blue-600 text-white py-4 rounded-xl font-bold text-center text-lg">Get Started</a>
         </div>
 
         <section class="relative pt-16 md:pt-28 pb-20 px-6 text-center">
