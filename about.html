@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>About Us - Mahija Chit Fund Pvt Ltd</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -25,41 +25,41 @@
         .c1 { width: 600px; height: 600px; background: #3b82f6; top: -10%; left: -10%; }
         .c2 { width: 500px; height: 500px; background: #fbbf24; bottom: 10%; right: -5%; }
         @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,30px) scale(1.05); } }
-/* Missing classes for Branch Cards */
-.office-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    border-radius: 24px;
-    padding: 32px;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Ensures all cards are same height */
-}
-.info-icon {
-    background: #eff6ff;
-    color: #2563eb;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    flex-shrink: 0;
-}
-        /* HEADER LOGO SCALING (Matched to Home) */
-        .logo-box svg {
+
+        .logo-img {
+            height: 36px;
             width: auto;
-            height: 40px;
             display: block;
+            object-fit: contain;
         }
         @media (min-width: 768px) {
-            .logo-box svg { height: 50px; }
+            .logo-img { height: 48px; }
+        }
+
+        .office-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .info-icon {
+            background: #eff6ff;
+            color: #2563eb;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            flex-shrink: 0;
         }
 
         .nav-shadow { box-shadow: 0 4px 25px -10px rgba(0,0,0,0.06); }
         
-        /* Transition & Cards */
         .content-card {
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             background: rgba(255, 255, 255, 0.8);
@@ -67,11 +67,22 @@
             border: 1px solid rgba(226, 232, 240, 0.5);
         }
 
+        /* FIXED MOBILE MENU LOGIC (Matched to Home/Contact) */
         #mobile-menu {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             clip-path: circle(0% at 100% 0%);
+            visibility: hidden;
+            height: 100dvh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            background: white;
         }
-        #mobile-menu.active { clip-path: circle(150% at 100% 0%); }
+        #mobile-menu.active { 
+            clip-path: circle(150% at 100% 0%); 
+            visibility: visible;
+        }
+        body.menu-open { overflow: hidden; }
     </style>
 </head>
 <body>
@@ -83,16 +94,8 @@
 
     <div class="relative z-10">
         <nav class="flex items-center justify-between px-6 md:px-12 py-3 md:py-4 sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 nav-shadow">
-            <a href="index.html" class="logo-box">
-                <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="800" height="200" fill="transparent" />
-                    <polygon points="40,160 110,30 180,160" fill="#201080" stroke="#C5A059" stroke-width="4"/>
-                    <text x="110" y="125" font-family="Serif, Georgia" font-size="60" font-weight="bold" fill="white" text-anchor="middle">m</text>
-                    <text x="110" y="185" font-family="Arial, sans-serif" font-size="18" fill="#D4733A" text-anchor="middle" font-weight="bold">SINCE 1999</text>
-                    <text x="220" y="90" font-family="Arial Black, sans-serif" font-size="90" fill="#B32025" letter-spacing="-2">MAHIJA</text>
-                    <text x="220" y="135" font-family="Arial Black, sans-serif" font-size="32" fill="#1A1A80">CHIT FUND PVT. LTD.</text>
-                    <text x="220" y="175" font-family="Arial, sans-serif" font-size="18" fill="#C5A059">(a company incorporated under Indian companies act, 1956)</text>
-                </svg>
+            <a href="index.html" class="flex items-center">
+                <img src="logo.png" alt="Mahija Chit Fund" class="logo-img">
             </a>
 
             <div class="hidden lg:flex items-center gap-8 text-[13px] font-semibold text-gray-500 uppercase tracking-wider">
@@ -104,24 +107,30 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <button class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Get Started</button>
+                <a href="contact.html" class="hidden md:inline-flex items-center justify-center bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Get Started</a>
                 <button id="menu-toggle" class="lg:hidden p-2 text-gray-600"><i data-lucide="menu" class="w-7 h-7"></i></button>
             </div>
         </nav>
 
-        <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] p-8 flex flex-col lg:hidden">
-            <div class="flex justify-between items-center mb-12">
-                <span class="text-xl font-black text-blue-900 tracking-tighter">MAHIJA</span>
-                <button id="menu-close"><i data-lucide="x" class="w-8 h-8 text-gray-800"></i></button>
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] lg:hidden">
+            <div class="flex justify-between items-center p-6 shrink-0">
+                <img src="logo.png" alt="Mahija Logo" class="h-8 w-auto">
+                <button id="menu-close" class="p-3 bg-gray-100 rounded-full transition-transform active:scale-90">
+                    <i data-lucide="x" class="w-6 h-6 text-gray-800"></i>
+                </button>
             </div>
-            <div class="flex flex-col gap-6 text-2xl font-bold text-gray-800">
-                <a href="index.html">Home</a>
-                <a href="about.html" class="text-blue-600">About Us</a>
-                <a href="plans.html">Chit Plans</a>
-                <a href="works.html">How it Works</a>
-                <a href="contact.html">Contact</a>
+            <div class="flex-1 overflow-y-auto py-4">
+                <div class="flex flex-col gap-6 px-8 text-2xl font-bold text-gray-800">
+                    <a href="index.html">Home</a>
+                    <a href="about.html" class="text-blue-600">About Us</a>
+                    <a href="plans.html">Chit Plans</a>
+                    <a href="works.html">How it Works</a>
+                    <a href="contact.html">Contact</a>
+                </div>
             </div>
-            <button class="mt-auto bg-blue-600 text-white py-4 rounded-xl font-bold text-lg">Get Started</button>
+            <div class="p-6 border-t border-gray-100 shrink-0 bg-white">
+                <a href="contact.html" class="w-full inline-flex items-center justify-center bg-blue-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg">Get Started</a>
+            </div>
         </div>
 
         <main class="relative py-16 md:py-24 px-6 max-w-7xl mx-auto">
@@ -148,53 +157,55 @@
                     </div>
                 </div>
             </section>
-<section class="mb-24" data-aos="fade-up">
-    <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-bold mb-6 tracking-widest uppercase">
-        Our Presence
-    </div>
-    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight">Our Branch Network</h2>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-        <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
-            <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                <i data-lucide="building-2" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Hyderabad</h3>
-            <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
-                <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>SMR Vinay Capitol, Balanagar, Hyderabad, Telangana</span></p>
-                <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
-                <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>hyd@mahijachitfund.com</span></p>
-            </div>
-            <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
-        </div>
 
-        <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
-            <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                <i data-lucide="building-2" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Nizamabad</h3>
-            <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
-                <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>Sarawathi Nagar, Hyderabad Road, Nizamabad, Telangana</span></p>
-                <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
-                <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>nzb@mahijachitfund.com</span></p>
-            </div>
-            <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
-        </div>
+            <section class="mb-24" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-bold mb-6 tracking-widest uppercase">
+                    Our Presence
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight">Our Branch Network</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
+                        <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i data-lucide="building-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Hyderabad</h3>
+                        <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
+                            <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>SMR Vinay Capitol, Balanagar, Hyderabad, Telangana</span></p>
+                            <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
+                            <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>hyd@mahijachitfund.com</span></p>
+                        </div>
+                        <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
+                    </div>
 
-        <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
-            <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                <i data-lucide="building-2" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Indur</h3>
-            <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
-                <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>Surya Towers, Hyderabad Road, Indur, Telangana</span></p>
-                <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
-                <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>indur@mahijachitfund.com</span></p>
-            </div>
-            <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
-        </div>
-    </div>
-</section>
+                    <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
+                        <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i data-lucide="building-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Nizamabad</h3>
+                        <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
+                            <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>Sarawathi Nagar, Hyderabad Road, Nizamabad, Telangana</span></p>
+                            <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
+                            <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>nzb@mahijachitfund.com</span></p>
+                        </div>
+                        <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
+                    </div>
+
+                    <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
+                        <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i data-lucide="building-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Indur</h3>
+                        <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
+                            <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>Surya Towers, Hyderabad Road, Indur, Telangana</span></p>
+                            <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
+                            <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>indur@mahijachitfund.com</span></p>
+                        </div>
+                        <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
+                    </div>
+                </div>
+            </section>
+
             <section class="mb-24 py-16 border-y border-gray-100" data-aos="fade-up">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12 text-center tracking-tight">Our Strength</h2>
                 <div class="grid md:grid-cols-3 gap-8">
@@ -315,9 +326,18 @@
             const menuToggle = document.getElementById('menu-toggle');
             const menuClose = document.getElementById('menu-close');
             const mobileMenu = document.getElementById('mobile-menu');
+            const body = document.body;
 
-            menuToggle.onclick = () => mobileMenu.classList.add('active');
-            menuClose.onclick = () => mobileMenu.classList.remove('active');
+            menuToggle.onclick = () => {
+                mobileMenu.classList.add('active');
+                body.classList.add('menu-open');
+                lucide.createIcons(); 
+            };
+
+            menuClose.onclick = () => {
+                mobileMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+            };
         });
     </script>
 </body>

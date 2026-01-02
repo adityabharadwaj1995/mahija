@@ -14,8 +14,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; overflow-x: hidden; }
 
-        .logo-box svg { width: auto; height: 40px; display: block; }
-        @media (min-width: 768px) { .logo-box svg { height: 50px; } }
+        /* UNIFIED LOGO STYLING */
+        .logo-img {
+            height: 36px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+        @media (min-width: 768px) {
+            .logo-img { height: 48px; }
+        }
 
         .nav-shadow { box-shadow: 0 4px 25px -10px rgba(0,0,0,0.06); }
         
@@ -61,16 +69,8 @@
 
     <div class="relative z-10">
         <nav class="flex items-center justify-between px-6 md:px-12 py-3 md:py-4 sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 nav-shadow">
-            <a href="index.html" class="logo-box">
-                <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="800" height="200" fill="transparent" />
-                    <polygon points="40,160 110,30 180,160" fill="#201080" stroke="#C5A059" stroke-width="4"/>
-                    <text x="110" y="125" font-family="Serif, Georgia" font-size="60" font-weight="bold" fill="white" text-anchor="middle">m</text>
-                    <text x="110" y="185" font-family="Arial, sans-serif" font-size="18" fill="#D4733A" text-anchor="middle" font-weight="bold">SINCE 1999</text>
-                    <text x="220" y="90" font-family="Arial Black, sans-serif" font-size="90" fill="#B32025" letter-spacing="-2">MAHIJA</text>
-                    <text x="220" y="135" font-family="Arial Black, sans-serif" font-size="32" fill="#1A1A80">CHIT FUND PVT. LTD.</text>
-                    <text x="220" y="175" font-family="Arial, sans-serif" font-size="18" fill="#C5A059">(a company incorporated under Indian companies act, 1956)</text>
-                </svg>
+            <a href="index.html">
+                <img src="logo.png" alt="Mahija Chit Fund" class="logo-img">
             </a>
 
             <div class="hidden lg:flex items-center gap-8 text-[13px] font-semibold text-gray-500 uppercase tracking-wider">
@@ -89,7 +89,7 @@
 
         <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] lg:hidden">
             <div class="flex justify-between items-center p-6 shrink-0">
-                <span class="text-xl font-black text-blue-900 tracking-tighter">MAHIJA</span>
+                <img src="logo.png" alt="Mahija Logo" class="h-8 w-auto">
                 <button id="menu-close" class="p-3 bg-gray-100 rounded-full transition-transform active:scale-90">
                     <i data-lucide="x" class="w-6 h-6 text-gray-800"></i>
                 </button>
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="p-6 border-t border-gray-100 shrink-0 bg-white">
-                <a href="contact.html" class="w-full inline-flex items-center justify-center bg-blue-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg">Get Started</a>
+               <a href="contact.html" class="w-full inline-flex items-center justify-center bg-blue-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg">Get Started</a>
             </div>
         </div>
 
