@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us - Mahija Chit Fund Pvt Ltd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; overflow-x: hidden; }
+
+        .logo-box svg { width: auto; height: 40px; display: block; }
+        @media (min-width: 768px) { .logo-box svg { height: 50px; } }
+
+        .nav-shadow { box-shadow: 0 4px 25px -10px rgba(0,0,0,0.06); }
+        
+        /* Mobile Menu Logic */
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            clip-path: circle(0% at 100% 0%);
+            visibility: hidden;
+            height: 100dvh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+        #mobile-menu.active { 
+            clip-path: circle(150% at 100% 0%); 
+            visibility: visible;
+        }
+        body.menu-open { overflow: hidden; }
+
+        /* Contact Form Styles */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .office-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .info-icon {
+            background: #eff6ff;
+            color: #2563eb;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="relative z-10">
+        <nav class="flex items-center justify-between px-6 md:px-12 py-3 md:py-4 sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 nav-shadow">
+            <a href="index.html" class="logo-box">
+                <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="800" height="200" fill="transparent" />
+                    <polygon points="40,160 110,30 180,160" fill="#201080" stroke="#C5A059" stroke-width="4"/>
+                    <text x="110" y="125" font-family="Serif, Georgia" font-size="60" font-weight="bold" fill="white" text-anchor="middle">m</text>
+                    <text x="110" y="185" font-family="Arial, sans-serif" font-size="18" fill="#D4733A" text-anchor="middle" font-weight="bold">SINCE 1999</text>
+                    <text x="220" y="90" font-family="Arial Black, sans-serif" font-size="90" fill="#B32025" letter-spacing="-2">MAHIJA</text>
+                    <text x="220" y="135" font-family="Arial Black, sans-serif" font-size="32" fill="#1A1A80">CHIT FUND PVT. LTD.</text>
+                    <text x="220" y="175" font-family="Arial, sans-serif" font-size="18" fill="#C5A059">(a company incorporated under Indian companies act, 1956)</text>
+                </svg>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-8 text-[13px] font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+                <a href="about.html" class="hover:text-blue-600 transition-colors">About Us</a>
+                <a href="plans.html" class="hover:text-blue-600 transition-colors">Chit Plans</a>
+                <a href="works.html" class="hover:text-blue-600 transition-colors">How It Works</a>
+                <a href="contact.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="contact.html" class="hidden md:inline-flex items-center justify-center bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Get Started</a>
+                <button id="menu-toggle" class="lg:hidden p-2 text-gray-600"><i data-lucide="menu" class="w-7 h-7"></i></button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[100] lg:hidden">
+            <div class="flex justify-between items-center p-6 shrink-0">
+                <span class="text-xl font-black text-blue-900 tracking-tighter">MAHIJA</span>
+                <button id="menu-close" class="p-3 bg-gray-100 rounded-full transition-transform active:scale-90">
+                    <i data-lucide="x" class="w-6 h-6 text-gray-800"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto py-4">
+                <div class="flex flex-col gap-6 px-8 text-2xl font-bold text-gray-800">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="plans.html">Chit Plans</a>
+                    <a href="works.html">How it Works</a>
+                    <a href="contact.html" class="text-blue-600">Contact</a>
+                </div>
+            </div>
+            <div class="p-6 border-t border-gray-100 shrink-0 bg-white">
+                <a href="contact.html" class="w-full inline-flex items-center justify-center bg-blue-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg">Get Started</a>
+            </div>
+        </div>
+
+        <section class="pt-20 pb-16 px-6 text-center">
+            <div data-aos="fade-up">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6">Get in <span class="text-blue-600">Touch</span></h1>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">Have questions? We're here to help you start your financial journey.</p>
+            </div>
+        </section>
+
+        <section class="pb-24 px-6 max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                
+                <div data-aos="fade-right" id="form-container">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8">Send Us a Message</h2>
+                    
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID_HERE" method="POST" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Full Name *</label>
+                            <input type="text" name="name" id="name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Email Address *</label>
+                            <input type="email" name="_replyto" id="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Phone Number *</label>
+                            <input type="tel" name="phone" id="phone" class="form-input" placeholder="+91 98765 43210" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Select the Branch *</label>
+                            <div class="relative">
+                                <select name="branch" class="form-input bg-white appearance-none cursor-pointer pr-10" required>
+                                    <option value="" disabled selected>Choose a branch near you</option>
+                                    <option value="hyderabad">Mahija Hyderabad</option>
+                                    <option value="nizamabad">Mahija Nizamabad</option>
+                                    <option value="indur">Mahija Indur</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-gray-400">
+                                    <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Message *</label>
+                            <textarea name="message" rows="5" class="form-input" placeholder="Tell us about your requirements..." required></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full md:w-auto bg-blue-600 text-white px-10 py-4 rounded-xl font-bold flex items-center justify-center gap-3 hover:bg-blue-700 transition-all shadow-lg">
+                            <span id="btn-text">Send Message</span> <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+
+                    <div id="success-message" class="hidden text-center py-12 bg-blue-50 rounded-2xl border border-blue-100">
+                        <div class="w-20 h-20 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Message Sent!</h3>
+                        <p class="text-gray-600">Thank you for reaching out. Our team will contact you shortly.</p>
+                        <button onclick="location.reload()" class="mt-6 text-blue-600 font-bold text-sm uppercase tracking-widest hover:underline">Send another message</button>
+                    </div>
+                </div>
+
+                <div class="space-y-12" data-aos="fade-left">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 mb-8">Contact Information</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="info-icon"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Email</h4>
+                                    <p class="text-blue-600 font-medium">info@mahijachitfund.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="info-icon"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Phone</h4>
+                                    <p class="text-blue-600 font-medium">+91 98765 43210</p>
+                                    <p class="text-xs text-gray-400 mt-1 uppercase font-semibold">Mon - Sat: 9:30 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900 mb-8">Our Offices</h2>
+                        <div class="space-y-4">
+                            <div class="office-card flex items-start gap-4">
+                                <div class="p-3 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">Mahija – Nizamabad</h4>
+                                    <p class="text-sm text-gray-500">Sarawathi Nagar, Hyderabad Road, Nizamabad, Telangana</p>
+                                </div>
+                            </div>
+                            <div class="office-card flex items-start gap-4">
+                                <div class="p-3 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">Mahija – Hyderabad</h4>
+                                    <p class="text-sm text-gray-500">SMR Vinay Capitol, Balanagar, Hyderabad, Telangana</p>
+                                </div>
+                            </div>
+                            <div class="office-card flex items-start gap-4">
+                                <div class="p-3 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 mb-1">Mahija – Indur</h4>
+                                    <p class="text-sm text-gray-500">Surya Towers, Hyderabad Road, Indur, Telangana</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-blue-600 text-white text-center px-6">
+            <div data-aos="zoom-in">
+                <h2 class="text-4xl font-bold mb-6">Visit Our Nearest Office</h2>
+                <p class="text-blue-100 max-w-2xl mx-auto text-lg leading-relaxed">Our team is ready to assist you with all your chit fund queries and help you choose the perfect plan.</p>
+            </div>
+        </section>
+
+        <footer class="bg-slate-900 text-gray-400 py-20 px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+                <div>
+                    <h4 class="text-white text-2xl font-bold mb-6 tracking-tight">Mahija Chit Fund Pvt Ltd</h4>
+                    <p class="text-sm mb-6 leading-relaxed">Your Financial Empowerment Partner. Established with a legacy of trust and financial growth.</p>
+                    <p class="text-[10px] text-gray-500 font-semibold tracking-wider">CIN: U65992TG2022PTC166426<br>ESTABLISHED: 1999</p>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Quick Links</h5>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-blue-400 transition-colors">About Us</a></li>
+                        <li><a href="plans.html" class="hover:text-blue-400 transition-colors">Chit Plans</a></li>
+                        <li><a href="works.html" class="hover:text-blue-400 transition-colors">How it Works</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Our Offices</h5>
+                    <div class="space-y-6 text-[11px] leading-relaxed">
+                        <p class="flex gap-3"><i data-lucide="map-pin" class="shrink-0 w-4 h-4 text-blue-500"></i> <span><b>Nizamabad:</b> Sarawathi Nagar, Hyderabad Road, Telangana</span></p>
+                        <p class="flex gap-3"><i data-lucide="map-pin" class="shrink-0 w-4 h-4 text-blue-500"></i> <span><b>Hyderabad:</b> SMR Vinay Capitol, Hyderabad, Telangana</span></p>
+                        <p class="flex gap-3"><i data-lucide="map-pin" class="shrink-0 w-4 h-4 text-blue-500"></i> <span><b>Indur:</b> Surya Towers, Hyderabad Road, Indur</span></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Contact Us</h5>
+                    <div class="space-y-4 text-sm font-medium">
+                        <p class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500"></i> info@mahijachitfund.com</p>
+                        <p class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500"></i> +91 98765 43210</p>
+                        <div class="flex gap-5 mt-10">
+                            <i data-lucide="linkedin" class="w-5 h-5 hover:text-white transition-colors cursor-pointer"></i>
+                            <i data-lucide="instagram" class="w-5 h-5 hover:text-white transition-colors cursor-pointer"></i>
+                            <i data-lucide="facebook" class="w-5 h-5 hover:text-white transition-colors cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-20 pt-10 text-[10px] text-center font-bold uppercase tracking-widest text-gray-600">
+                <p>© 2026 Mahija Chit Fund Pvt Ltd. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis();
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
+
+            AOS.init({ duration: 1000, once: true });
+            lucide.createIcons();
+
+            // --- Formspree AJAX Logic ---
+            const contactForm = document.getElementById('contact-form');
+            const successMsg = document.getElementById('success-message');
+            const btnText = document.getElementById('btn-text');
+            const submitBtn = document.getElementById('submit-btn');
+
+            if(contactForm) {
+                contactForm.onsubmit = async (e) => {
+                    e.preventDefault();
+                    
+                    // Show "Sending..." state
+                    btnText.innerText = "Sending...";
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-50');
+
+                    const formData = new FormData(contactForm);
+                    
+                    try {
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'Accept': 'application/json' }
+                        });
+
+                        if (response.ok) {
+                            // Hide form and show success
+                            contactForm.classList.add('hidden');
+                            successMsg.classList.remove('hidden');
+                            lucide.createIcons();
+                            window.scrollTo({ top: document.getElementById('form-container').offsetTop - 100, behavior: 'smooth' });
+                        } else {
+                            alert("Oops! There was a problem submitting your form. Please try again.");
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-50');
+                            btnText.innerText = "Send Message";
+                        }
+                    } catch (error) {
+                        alert("Network error. Please check your connection.");
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-50');
+                        btnText.innerText = "Send Message";
+                    }
+                };
+            }
+
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuClose = document.getElementById('menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const body = document.body;
+
+            menuToggle.onclick = () => {
+                mobileMenu.classList.add('active');
+                body.classList.add('menu-open');
+                lucide.createIcons(); 
+            };
+
+            menuClose.onclick = () => {
+                mobileMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+            };
+        });
+    </script>
+</body>
+</html>

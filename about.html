@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Mahija Chit Fund Pvt Ltd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; overflow-x: hidden; }
+
+        .animated-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+        .mesh-circle {
+            position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.2;
+            animation: drift 20s infinite alternate ease-in-out;
+        }
+        .c1 { width: 600px; height: 600px; background: #3b82f6; top: -10%; left: -10%; }
+        .c2 { width: 500px; height: 500px; background: #fbbf24; bottom: 10%; right: -5%; }
+        @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,30px) scale(1.05); } }
+/* Missing classes for Branch Cards */
+.office-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 24px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards are same height */
+}
+.info-icon {
+    background: #eff6ff;
+    color: #2563eb;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+        /* HEADER LOGO SCALING (Matched to Home) */
+        .logo-box svg {
+            width: auto;
+            height: 40px;
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .logo-box svg { height: 50px; }
+        }
+
+        .nav-shadow { box-shadow: 0 4px 25px -10px rgba(0,0,0,0.06); }
+        
+        /* Transition & Cards */
+        .content-card {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            clip-path: circle(0% at 100% 0%);
+        }
+        #mobile-menu.active { clip-path: circle(150% at 100% 0%); }
+    </style>
+</head>
+<body>
+
+    <div class="animated-gradient">
+        <div class="mesh-circle c1"></div>
+        <div class="mesh-circle c2"></div>
+    </div>
+
+    <div class="relative z-10">
+        <nav class="flex items-center justify-between px-6 md:px-12 py-3 md:py-4 sticky top-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100 nav-shadow">
+            <a href="index.html" class="logo-box">
+                <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="800" height="200" fill="transparent" />
+                    <polygon points="40,160 110,30 180,160" fill="#201080" stroke="#C5A059" stroke-width="4"/>
+                    <text x="110" y="125" font-family="Serif, Georgia" font-size="60" font-weight="bold" fill="white" text-anchor="middle">m</text>
+                    <text x="110" y="185" font-family="Arial, sans-serif" font-size="18" fill="#D4733A" text-anchor="middle" font-weight="bold">SINCE 1999</text>
+                    <text x="220" y="90" font-family="Arial Black, sans-serif" font-size="90" fill="#B32025" letter-spacing="-2">MAHIJA</text>
+                    <text x="220" y="135" font-family="Arial Black, sans-serif" font-size="32" fill="#1A1A80">CHIT FUND PVT. LTD.</text>
+                    <text x="220" y="175" font-family="Arial, sans-serif" font-size="18" fill="#C5A059">(a company incorporated under Indian companies act, 1956)</text>
+                </svg>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-8 text-[13px] font-semibold text-gray-500 uppercase tracking-wider">
+                <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+                <a href="about.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">About Us</a>
+                <a href="plans.html" class="hover:text-blue-600 transition-colors">Chit Plans</a>
+                <a href="works.html" class="hover:text-blue-600 transition-colors">How It Works</a>
+                <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button class="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-xs uppercase tracking-widest">Get Started</button>
+                <button id="menu-toggle" class="lg:hidden p-2 text-gray-600"><i data-lucide="menu" class="w-7 h-7"></i></button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] p-8 flex flex-col lg:hidden">
+            <div class="flex justify-between items-center mb-12">
+                <span class="text-xl font-black text-blue-900 tracking-tighter">MAHIJA</span>
+                <button id="menu-close"><i data-lucide="x" class="w-8 h-8 text-gray-800"></i></button>
+            </div>
+            <div class="flex flex-col gap-6 text-2xl font-bold text-gray-800">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="text-blue-600">About Us</a>
+                <a href="plans.html">Chit Plans</a>
+                <a href="works.html">How it Works</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="mt-auto bg-blue-600 text-white py-4 rounded-xl font-bold text-lg">Get Started</button>
+        </div>
+
+        <main class="relative py-16 md:py-24 px-6 max-w-7xl mx-auto">
+            
+            <section class="mb-24" data-aos="fade-up">
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-bold mb-6 tracking-widest uppercase">
+                    Our Identity
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-8 tracking-tight">Who We Are</h2>
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <div class="space-y-6 text-gray-600 text-lg leading-relaxed">
+                        <p>
+                            Mahija Chit Fund Pvt Ltd is a premier financial institution in Telangana, established with a vision to provide secure, transparent, and community-driven savings solutions. We operate under the stringent guidelines of the Chit Fund Act and the Indian Companies Act, 1956.
+                        </p>
+                        <p>
+                            We act as a bridge between your current savings and your future financial goals, offering a platform where trust meets growth. Our journey is defined by thousands of families who have achieved their dreams through our disciplined chit plans.
+                        </p>
+                    </div>
+                    <div class="content-card p-8 rounded-3xl border-l-4 border-l-blue-600">
+                        <h4 class="text-blue-900 font-bold mb-4">Our Core Philosophy</h4>
+                        <p class="text-gray-500 italic leading-relaxed">
+                            "To empower every household with a habit of regular savings and provide immediate liquidity during financial needs, ensuring no dream is left unfulfilled due to lack of funds."
+                        </p>
+                    </div>
+                </div>
+            </section>
+<section class="mb-24" data-aos="fade-up">
+    <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-bold mb-6 tracking-widest uppercase">
+        Our Presence
+    </div>
+    <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight">Our Branch Network</h2>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
+            <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <i data-lucide="building-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Hyderabad</h3>
+            <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
+                <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>SMR Vinay Capitol, Balanagar, Hyderabad, Telangana</span></p>
+                <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
+                <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>hyd@mahijachitfund.com</span></p>
+            </div>
+            <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
+        </div>
+
+        <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
+            <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <i data-lucide="building-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Nizamabad</h3>
+            <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
+                <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>Sarawathi Nagar, Hyderabad Road, Nizamabad, Telangana</span></p>
+                <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
+                <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>nzb@mahijachitfund.com</span></p>
+            </div>
+            <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
+        </div>
+
+        <div class="office-card group hover:shadow-2xl hover:-translate-y-1 transition-all">
+            <div class="info-icon mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <i data-lucide="building-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-4">Mahija Indur</h3>
+            <div class="space-y-4 text-sm text-gray-600 mb-8 flex-1">
+                <p class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>Surya Towers, Hyderabad Road, Indur, Telangana</span></p>
+                <p class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>+91 98765 43210</span></p>
+                <p class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500 shrink-0"></i> <span>indur@mahijachitfund.com</span></p>
+            </div>
+            <a href="contact.html" class="inline-flex items-center justify-center w-full bg-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors">Contact Us</a>
+        </div>
+    </div>
+</section>
+            <section class="mb-24 py-16 border-y border-gray-100" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12 text-center tracking-tight">Our Strength</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="content-card p-8 rounded-2xl text-center">
+                        <div class="bg-blue-50 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 text-blue-600">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-3">Regulatory Compliance</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">100% registered and compliant with Government of Telangana regulations and the Chit Fund Act.</p>
+                    </div>
+                    <div class="content-card p-8 rounded-2xl text-center">
+                        <div class="bg-orange-50 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 text-orange-600">
+                            <i data-lucide="handshake"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-3">Legacy of Trust</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">Since 1999, we have maintained an impeccable record of timely payments and transparent auctions.</p>
+                    </div>
+                    <div class="content-card p-8 rounded-2xl text-center">
+                        <div class="bg-green-50 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6 text-green-600">
+                            <i data-lucide="landmark"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-3">Financial Stability</h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">With ₹500Cr+ managed assets, our robust financial foundation ensures your money is always safe.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-12 tracking-tight">Our Management</h2>
+                <div class="content-card p-8 md:p-12 rounded-[2.5rem]">
+                    <div class="grid lg:grid-cols-3 gap-12">
+                        <div class="lg:col-span-2 space-y-6 text-gray-600 leading-relaxed">
+                            <p>
+                                Led by industry veterans with decades of experience in financial services and chit fund management, Mahija is governed by a board that prioritizes ethical practices above all.
+                            </p>
+                            <p>
+                                Our management team brings together expertise from banking, legal, and community finance sectors to ensure that every chit group is managed with precision and every customer query is addressed with professionalism.
+                            </p>
+                            <div class="flex gap-4 items-center pt-4">
+                                <div class="h-px bg-blue-100 flex-grow"></div>
+                                <span class="text-xs font-black text-blue-600 uppercase tracking-widest">Experience Meets Integrity</span>
+                                <div class="h-px bg-blue-100 flex-grow"></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-8 flex flex-col justify-center border border-gray-100">
+                            <h4 class="text-slate-900 font-bold mb-2 text-xl">Director's Desk</h4>
+                            <p class="text-sm text-gray-500 mb-6">"Our commitment is to your growth. We don't just manage funds; we manage the trust you place in us."</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">M</div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-900">Mahija Board</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase">Executive Management</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="bg-slate-900 text-gray-400 py-20 px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+                <div>
+                    <h4 class="text-white text-2xl font-bold mb-6 tracking-tight">Mahija Chit Fund Pvt Ltd</h4>
+                    <p class="text-sm mb-6 leading-relaxed">Your Financial Empowerment Partner. Established with a legacy of trust and financial growth.</p>
+                    <p class="text-[10px] text-gray-500 font-semibold tracking-wider">CIN: U65992TG2022PTC166426<br>ESTABLISHED: 1999</p>
+                </div>
+                
+                <div>
+                    <h5 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Quick Links</h5>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="index.html" class="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="plans.html" class="hover:text-blue-400 transition-colors">Chit Plans</a></li>
+                        <li><a href="works.html" class="hover:text-blue-400 transition-colors">How It Works</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Our Offices</h5>
+                    <div class="space-y-6 text-[11px] leading-relaxed">
+                        <p class="flex gap-3"><i data-lucide="map-pin" class="shrink-0 w-4 h-4 text-blue-500"></i> <span><b>Nizamabad:</b> Sarawathi Nagar, Hyderabad Road, Telangana</span></p>
+                        <p class="flex gap-3"><i data-lucide="map-pin" class="shrink-0 w-4 h-4 text-blue-500"></i> <span><b>Hyderabad:</b> SMR Vinay Capitol, Hyderabad, Telangana</span></p>
+                        <p class="flex gap-3"><i data-lucide="map-pin" class="shrink-0 w-4 h-4 text-blue-500"></i> <span><b>Indur:</b> Surya Towers, Hyderabad Road, Indur</span></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Contact Us</h5>
+                    <div class="space-y-4 text-sm font-medium">
+                        <p class="flex items-center gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-500"></i> info@mahijachitfund.com</p>
+                        <p class="flex items-center gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-500"></i> +91 98765 43210</p>
+                        <div class="flex gap-5 mt-10">
+                            <i data-lucide="linkedin" class="w-5 h-5 hover:text-white transition-colors cursor-pointer"></i>
+                            <i data-lucide="instagram" class="w-5 h-5 hover:text-white transition-colors cursor-pointer"></i>
+                            <i data-lucide="facebook" class="w-5 h-5 hover:text-white transition-colors cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-20 pt-10 text-[10px] text-center font-bold uppercase tracking-widest text-gray-600">
+                <p>© 2026 Mahija Chit Fund Pvt Ltd. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis();
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
+
+            AOS.init({ duration: 1000, once: true });
+            lucide.createIcons();
+
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuClose = document.getElementById('menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuToggle.onclick = () => mobileMenu.classList.add('active');
+            menuClose.onclick = () => mobileMenu.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
